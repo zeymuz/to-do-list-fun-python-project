@@ -1,0 +1,60 @@
+# TO DO LIST 
+
+print("TO DO LIST")
+user_input = input("would you like to | VIEW | ADD | REMOVE | EXIT | your list?").lower()
+
+to_do_list = open("text.txt", "r")
+
+
+
+while user_input == "add":
+    add = input("what would you like to add to your list,\ntype stop to exit\n").lower()
+
+    if add == "stop":
+        print(to_do_list.read())
+        print("restart the program to reuse list please")
+        break
+
+    else:
+        file = open("text.txt", "a")
+        file.write(add + "\n")
+        file.close
+        print(to_do_list.read())
+        
+
+
+while user_input == "view":
+    file = open("text.txt", "a")
+    print(to_do_list.read())
+    file.close
+    print("to run program again press: ctrl+alt+a ")
+    break
+
+
+
+while user_input == "remove":
+    
+
+    print(to_do_list.read())
+    text_to_remove = input("Enter the text you want to remove type STOP to quit program: ").lower()
+
+
+    with open("text.txt", 'r+', encoding='utf-8') as file:
+        content = file.read().replace(text_to_remove, '')
+        file.seek(0)
+        file.write(content)
+        file.truncate()
+
+        print(f"Removed all occurrences of '{text_to_remove}' from {"text.txt"}.")
+
+
+    if text_to_remove == "stop":
+        print(to_do_list.read())
+        print("to run program again press: crtl+alt+a ")
+        break
+        
+
+
+while user_input == "exit":
+    print("to run program again press ctrl+alt+a      bye bye!!")
+    break
